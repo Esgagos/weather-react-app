@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import Navbar from "./Navbar";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import App from "./App";
+import Searchbox from "./Searchbox";
+import Displaysearchedlocation from "./Displaysearchedlocation";
+import Footer from "./Footer";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+    <Navbar />
+    <Searchbox />
+    <Displaysearchedlocation />
+    <Footer />
+  </StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

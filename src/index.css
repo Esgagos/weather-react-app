@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h5 {
+  padding-top: 5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main-row {
+  margin: 0.5rem 1rem;
+  gap: 0.5rem;
+}
+
+.sun {
+  padding-top: -5px;
+  width: 75px;
+}
+.card {
+  height: 250px;
+  background-color: #ffffff;
+  color: #808080;
+  opacity: 0.7;
+  text-align: center;
+  box-shadow: 1px -1px, 0.1em 0 0.2em rgb(1, 5, 8);
+  line-height: 1.7;
+}
+
+.date {
+  opacity: 0.9;
+  font-size: 18px;
+}
+.card-degree {
+  padding-top: 5%;
+}
+.card-wind {
+  font-size: 15px;
+}
+.card-text {
+  font-size: 15px;
+  color: rgb(97, 95, 95);
+  text-transform: capitalize;
+}
+.card-title {
+  font-weight: 200;
+}
+
+.units {
+  display: flex;
+}
+/* .current-temp {
+  position: relative;
+  margin-left: 11px;
+  font-size: 16px;
+}
+.show-current-temp {
+  font-size: 25px;
+} */
+
+.weather-state {
+  color: black;
+  font-size: 20px;
+  margin-left: 48px;
+}
+.description {
+  margin-left: 25rem;
+  color: black;
+  text-transform: capitalize;
+}
+
+.column {
+  margin-top: 10px;
+}
+
+.min-temperature {
+  font-weight: 200;
+  color: #808080;
 }
