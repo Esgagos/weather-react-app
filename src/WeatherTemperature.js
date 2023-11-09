@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const fahrSymbol = "ºF";
 const degSymbol = "ºC";
@@ -7,25 +7,31 @@ export default function WeatherTemperature(props) {
   const [unit, setUnit] = useState(degSymbol);
   const [temperature, setTemperature] = useState(props.temperature);
 
+  const showFahrenheit = useCallback(
+    (event) => {
+      event && event.preventDefault();
+      setTemperature(Math.round((props.temperature * 9) / 5 + 32));
+      setUnit(fahrSymbol);
+    },
+    [props.temperature]
+  );
+
+  const showCelsius = useCallback(
+    (event) => {
+      event && event.preventDefault();
+      setTemperature(props.temperature);
+      setUnit(degSymbol);
+    },
+    [props.temperature]
+  );
+
   useEffect(() => {
     if (unit === degSymbol) {
       showCelsius();
     } else {
       showFahrenheit();
     }
-  }, [props.temperature]);
-
-  function showFahrenheit(event) {
-    event && event.preventDefault();
-    setTemperature(Math.round((props.temperature * 9) / 5 + 32));
-    setUnit(fahrSymbol);
-  }
-
-  function showCelsius(event) {
-    event && event.preventDefault();
-    setTemperature(props.temperature);
-    setUnit(degSymbol);
-  }
+  }, [props.temperature, unit, showCelsius, showFahrenheit]);
 
   return (
     <div>
