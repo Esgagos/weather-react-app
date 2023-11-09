@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 
 import App from "./App";
 import Searchbox from "./Searchbox";
-import Displaysearchedlocation from "./Displaysearchedlocation";
 import Footer from "./Footer";
 
 const rootElement = document.getElementById("root");
@@ -16,7 +15,6 @@ root.render(
     <App />
     <Navbar />
     <Searchbox />
-    <Displaysearchedlocation />
     <Footer />
   </StrictMode>
 );
