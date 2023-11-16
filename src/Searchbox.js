@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
@@ -11,7 +11,7 @@ export default function Searchbox() {
   const searchValueInputRef = useRef("");
   const city = useRef("");
 
-  function processResponse(response) {
+  const processResponse = useCallback((response) => {
     const r = response.data;
 
     return {
@@ -24,36 +24,42 @@ export default function Searchbox() {
         ? Math.round(r.temperature?.current)
         : null,
     };
-  }
+  }, []);
 
-  function showWeather(response) {
-    if (response.data) {
-      const processedResponse = processResponse(response);
-      setCityDetails(processedResponse);
-    }
-  }
+  const showWeather = useCallback(
+    (response) => {
+      if (response.data) {
+        const processedResponse = processResponse(response);
+        setCityDetails(processedResponse);
+      }
+    },
+    [processResponse]
+  );
 
-  function handleSubmit(event) {
-    if (event) {
-      event.preventDefault();
-      city.current = searchValueInputRef.current.value;
-    } else {
-      city.current = "London";
-    }
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.current}&key=${apiKey}`; //`https://api.openweathermap.org/data/2.5/weather?q=${city.current}&appid=${apiKey}&units=metric`;
-    axios
-      .get(apiUrl)
-      .catch((e) => {
-        console.log(e);
-      })
-      .then(showWeather);
-  }
+  const handleSubmit = useCallback(
+    (event) => {
+      if (event) {
+        event.preventDefault();
+        city.current = searchValueInputRef.current.value;
+      } else {
+        city.current = "London";
+      }
+      const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.current}&key=${apiKey}`; //`https://api.openweathermap.org/data/2.5/weather?q=${city.current}&appid=${apiKey}&units=metric`;
+      axios
+        .get(apiUrl)
+        .catch((e) => {
+          console.log(e);
+        })
+        .then(showWeather);
+    },
+    [showWeather]
+  );
 
   useEffect(() => {
     if (!cityDetails) {
       handleSubmit();
     }
-  }, []);
+  }, [cityDetails, handleSubmit]);
 
   return (
     <div>
