@@ -56,6 +56,7 @@ export default function WeatherForecastDay(props) {
         <img
           src={props.data.condition?.icon_url}
           className="description-icon"
+          alt={descriptionDay()}
         />
         <li className="temperature-max">
           {maxTemp()}º&nbsp;
