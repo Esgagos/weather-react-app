@@ -7,7 +7,7 @@ export default function Footer() {
       <a href="https://github.com/Esgagos/weather-react-app" className="footer">
         Open-source code
       </a>
-      <span className="footer-name"> by Esperanza Tyldesley</span>
+      <span className="footer-name"> by Esperanza Tyldesley 🤩</span>
     </div>
   );
 }

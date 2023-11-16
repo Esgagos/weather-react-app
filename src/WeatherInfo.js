@@ -3,6 +3,10 @@ import FormattedDate from "./formattedDate.js";
 import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props) {
+  const descriptionLocation = () => {
+    const str = props.info.description;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
   return (
     <div className="weather-info">
       {props.info && (
@@ -13,7 +17,9 @@ export default function WeatherInfo(props) {
                 <h1 className="location">{props.location.current}</h1>
                 <WeatherTemperature temperature={props.info.temperature} />
                 <div className="weather-information">
-                  <p className="description"></p>
+                  <p className="description-location">
+                    {descriptionLocation()}
+                  </p>
 
                   <p className="temperature">
                     Wind gust (mph) {props.info.wind}

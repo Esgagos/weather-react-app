@@ -1,6 +1,9 @@
 .open-source-footer-link {
   text-align: center;
   font-style: italic;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  font-size: 0.95rem;
 }
 .footer {
   text-decoration: none;
