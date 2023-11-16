@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./Searchbox.css";
 
-const apiKey = "6e77343taf210f7060a5ae1ab4ao9183"; //"0efb4fc16a9ed98dc0b3aafd8491d6ad";
+const apiKey = "6e77343taf210f7060a5ae1ab4ao9183";
 
 export default function Searchbox() {
   const [cityDetails, setCityDetails] = useState(undefined);
@@ -12,6 +13,7 @@ export default function Searchbox() {
 
   function processResponse(response) {
     const r = response.data;
+
     return {
       icon: r.condition.icon,
       date: new Date(r.time * 1000),
@@ -25,7 +27,6 @@ export default function Searchbox() {
   }
 
   function showWeather(response) {
-    console.log(response.data);
     if (response.data) {
       const processedResponse = processResponse(response);
       setCityDetails(processedResponse);
@@ -48,9 +49,11 @@ export default function Searchbox() {
       .then(showWeather);
   }
 
-  if (!cityDetails) {
-    handleSubmit();
-  }
+  useEffect(() => {
+    if (!cityDetails) {
+      handleSubmit();
+    }
+  }, []);
 
   return (
     <div>
@@ -67,7 +70,8 @@ export default function Searchbox() {
           Search
         </button>
       </form>
-      <WeatherInfo info={cityDetails} location={city} />
+      {cityDetails && <WeatherInfo info={cityDetails} location={city} />}
+      {cityDetails && <WeatherForecast location={city.current} />}
     </div>
   );
 }

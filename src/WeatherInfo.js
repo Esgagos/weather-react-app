@@ -3,9 +3,8 @@ import FormattedDate from "./formattedDate.js";
 import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props) {
-  console.log("props: ", props);
   return (
-    <div>
+    <div className="weather-info">
       {props.info && (
         <div className="container">
           <div className="row gap-5">

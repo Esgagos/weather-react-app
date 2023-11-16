@@ -1,0 +1,39 @@
+.weather-forecast li {
+  list-style-type: none;
+  color: #808080;
+
+  opacity: 0.9;
+  text-align: center;
+}
+.weather-forecast ul {
+  padding-left: 0;
+}
+.day-card {
+  margin: 0 auto;
+  border-radius: 4px;
+  height: 275px;
+  background-color: #ffffff;
+  color: #808080;
+  opacity: 0.9;
+  text-align: center;
+  box-shadow: 1px -1px, 0.1em 0 0.2em rgb(1, 5, 8);
+  line-height: 1.7;
+}
+.date {
+  padding-top: 5px;
+  font-size: 1.25rem;
+  font-weight: 200;
+}
+.temperature-max {
+  font-size: 1.1rem;
+}
+.temperature-min {
+  font-size: 0.93rem;
+}
+.description {
+  font-size: 1rem;
+}
+.wind {
+  font-size: 1rem;
+  margin-top: 0.8vw;
+}
